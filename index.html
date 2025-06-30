@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="dashboard-root">
+    <aside class="sidebar">
+      <nav class="sidebar-nav">
+        <button class="sidebar-btn active">
+          <span class="sidebar-icon">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20.4585 16.1437C22.608 14.499 24 11.9153 24 9C24 4.02975 19.9702 0 15 0C10.0298 0 6 4.02975 6 9C6 11.9153 7.392 14.499 9.5415 16.1437C4.38 18.3982 0.75 23.7487 0.75 30H29.25C29.25 23.7487 25.62 18.3982 20.4585 16.1437ZM9 9C9 5.69175 11.6918 3 15 3C18.3082 3 21 5.69175 21 9C21 12.3082 18.3082 15 15 15C11.6918 15 9 12.3082 9 9ZM15 18C20.2328 18 24.642 21.8302 25.8938 27H4.10625C5.358 21.8302 9.76725 18 15 18Z" fill="#F5EFE7"/></svg>
+          </span> Staff
+        </button>
+        <button class="sidebar-btn">
+          <span class="sidebar-icon">
+            <svg width="28" height="26" viewBox="0 0 28 26" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12.6665 0.5H0.666504V11.75H12.6665V0.5ZM9.99984 9.25H3.33317V3H9.99984V9.25Z" fill="#F5EFE7"/><path d="M27.333 0.5H15.333V11.75H27.333V0.5ZM24.6663 9.25H17.9997V3H24.6663V9.25Z" fill="#F5EFE7"/><path d="M12.6665 14.25H0.666504V25.5H12.6665V14.25ZM9.99984 23H3.33317V16.75H9.99984V23Z" fill="#F5EFE7"/><path d="M27.333 14.25H15.333V25.5H27.333V14.25ZM24.6663 23H17.9997V16.75H24.6663V23Z" fill="#F5EFE7"/></svg>
+          </span> Dashboard
+        </button>
+        <button class="sidebar-btn">
+          <span class="sidebar-icon">
+            <svg width="35" height="32" viewBox="0 0 35 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.381 19.478L5.26933 28.5H13.6668H23.6668H30.3335V25.25H10.3985L12.2502 21.1875H29.0352L34.3127 5.75H8.201L6.53433 0.875H0.333496V4.125H4.13266L9.381 19.478ZM29.6877 9L26.6318 17.9375H12.3677L9.31183 9H29.6877Z" fill="#F5EFE7"/><path d="M13.6667 31.75C14.5871 31.75 15.3333 31.0225 15.3333 30.125C15.3333 29.2275 14.5871 28.5 13.6667 28.5C12.7462 28.5 12 29.2275 12 30.125C12 31.0225 12.7462 31.75 13.6667 31.75Z" fill="#F5EFE7"/><path d="M23.6667 31.75C24.5871 31.75 25.3333 31.0225 25.3333 30.125C25.3333 29.2275 24.5871 28.5 23.6667 28.5C22.7462 28.5 22 29.2275 22 30.125C22 31.0225 22.7462 31.75 23.6667 31.75Z" fill="#F5EFE7"/></svg>
+          </span> Orders
+        </button>
+        <button class="sidebar-btn">
+          <span class="sidebar-icon">
+            <svg width="36" height="31" viewBox="0 0 36 31" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M30.2017 12.4661C31.3909 11.1814 32.125 9.45069 32.125 7.54167C32.125 3.58387 28.9908 0.375 25.125 0.375C21.2592 0.375 18.125 3.58387 18.125 7.54167C18.125 9.45069 18.8591 11.1814 20.0482 12.4661C19.2065 12.9426 18.4365 13.5339 17.7566 14.2192C16.8256 11.3812 14.2111 9.33333 11.125 9.33333C7.25925 9.33333 4.125 12.5422 4.125 16.5C4.125 18.409 4.85912 20.1398 6.04825 21.4244C2.81513 23.2564 0.625 26.7806 0.625 30.8333H21.625C21.625 27.0914 19.7577 23.8001 16.9262 21.875H35.625C35.625 17.8222 33.4349 14.298 30.2017 12.4661ZM21.625 7.54167C21.625 5.56546 23.1947 3.95833 25.125 3.95833C27.0553 3.95833 28.625 5.56546 28.625 7.54167C28.625 9.51787 27.0553 11.125 25.125 11.125C23.1947 11.125 21.625 9.51787 21.625 7.54167ZM7.625 16.5C7.625 14.5238 9.19475 12.9167 11.125 12.9167C13.0553 12.9167 14.625 14.5238 14.625 16.5C14.625 18.4762 13.0553 20.0833 11.125 20.0833C9.19475 20.0833 7.625 18.4762 7.625 16.5ZM5.06475 27.25C6.27663 25.109 8.53938 23.6667 11.125 23.6667C13.7106 23.6667 15.9734 25.109 17.1853 27.25H5.06475ZM19.0647 18.2917C20.2766 16.1506 22.5394 14.7083 25.125 14.7083C27.7106 14.7083 29.9734 16.1506 31.1852 18.2917H19.0647Z" fill="#F5EFE7"/></svg>
+          </span> Customers
+        </button>
+        <button class="sidebar-btn">
+          <span class="sidebar-icon">
+            <svg width="31" height="30" viewBox="0 0 31 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.08381 29.3038H28.9165V9.88013H30.9168V0.130127H0.0834961V9.88013H2.08381V29.3038V29.3038ZM25.9796 26.2073H5.02068V9.88013H25.9796V26.2073ZM3.16683 3.38013H27.8335V6.63013H3.16683V3.38013Z" fill="#F5EFE7"/><path d="M20.8072 14.0369H10.1929V17.1H20.8072V14.0369Z" fill="#F5EFE7"/></svg>
+          </span> Supplies
+        </button>
+        <button class="sidebar-btn">
+          <span class="sidebar-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.7718 0.682373H0.582031V2.98485H21.7718V0.682373Z" fill="#F5EFE7"/><path d="M21.7718 12.7656H0.582031V15.0681H21.7718V12.7656Z" fill="#F5EFE7"/><path d="M21.7718 6.72412H6.39453V9.0266H21.7718V6.72412Z" fill="#F5EFE7"/><path d="M21.772 18.8074H10.9155V21.1099H21.772V18.8074Z" fill="#F5EFE7"/></svg>
+          </span> Pricelist
+        </button>
+      </nav>
+      <button class="sidebar-logout"><span class="sidebar-icon logout"><svg width="27" height="24" viewBox="0 0 27 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24.5496 0.0150146C24.5216 0.0130005 24.4979 0 24.4687 0H12.375C10.5143 0 9 1.34601 9 3V3.99994C9 4.552 9.50386 5.00006 10.1249 5.00006C10.746 5.00006 11.2499 4.552 11.2499 3.99994V3C11.2499 2.44904 11.755 2.00006 12.375 2.00006H17.6163L17.2731 2.10205C16.362 2.38202 15.75 3.14502 15.75 3.99994V18.9999H12.375C11.755 18.9999 11.2499 18.551 11.2499 18V15.9999C11.2499 15.4481 10.746 15 10.1249 15C9.50386 15 9 15.4481 9 15.9999V18C9 19.654 10.5143 21 12.375 21H15.75V21.9999C15.75 23.103 16.759 24 17.9999 24C18.2407 24 18.4691 23.9691 18.7165 23.9009L25.4756 21.8979C26.3879 21.618 26.9999 20.855 26.9999 20.0001V2.00006C26.9999 0.834045 25.8692 -0.0800171 24.5496 0.0150146V0.0150146Z" fill="#F5EFE7"/><path d="M12.0453 9.29291L7.54534 5.29297C7.22358 5.00696 6.73991 4.9209 6.31906 5.07599C5.89945 5.2309 5.62507 5.59601 5.62507 5.99994V8.99994H1.12493C0.504067 8.99994 0 9.448 0 9.99988C0 10.5519 0.504067 11 1.12493 11H5.62507V14C5.62507 14.4039 5.89945 14.7689 6.31906 14.924C6.73991 15.0789 7.22358 14.993 7.54534 14.707L12.0453 10.7069C12.4853 10.3159 12.4853 9.68403 12.0453 9.29291Z" fill="#F5EFE7"/></svg></span> Logout</button>
+    </aside>
+    <main class="dashboard-main">
+      <div class="dashboard-header-row">
+        <h1>Dashboard</h1>
+      </div>
+      <div class="dashboard-orders-row">
+        <div class="add-order-card">
+          <span>Add Order</span>
+          <button id="addOrderBtn" class="big-add-order">+</button>
+        </div>
+      </div>
+      <div class="dashboard-info-flex">
+        <div class="dashboard-info-left-box">
+          <div class="balance-card">
+            <div class="balance-title">Balance</div>
+            <div class="balance-amount">₱ 50000</div>
+          </div>
+          <div class="unpaid-card">
+            <div class="unpaid-title">Unpaid</div>
+            <div class="unpaid-amount">₱ 8000</div>
+          </div>
+        </div>
+        <div class="dashboard-info-right-group">
+          <div class="status-card">
+            <div class="status-row">
+              <span class="status-icon">
+                <svg width="43" height="39" viewBox="0 0 43 39" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.4268 0.337891C9.83698 0.337891 0.442139 8.79325 0.442139 19.2241C0.442139 29.655 9.83698 38.1103 21.4268 38.1103C33.0167 38.1103 42.4115 29.655 42.4115 19.2241C42.4115 8.79325 33.0167 0.337891 21.4268 0.337891ZM21.4268 34.3331C12.1705 34.3331 4.63908 27.5548 4.63908 19.2241C4.63908 10.8934 12.1705 4.11513 21.4268 4.11513C30.6832 4.11513 38.2146 10.8934 38.2146 19.2241C38.2146 27.5548 30.6832 34.3331 21.4268 34.3331Z" fill="#F5EFE7"/><path d="M23.5253 7.89233H19.3284V23.0013H23.5253V7.89233Z" fill="#F5EFE7"/><path d="M21.4268 30.5558C22.5858 30.5558 23.5253 29.7102 23.5253 28.6672C23.5253 27.6241 22.5858 26.7786 21.4268 26.7786C20.2679 26.7786 19.3284 27.6241 19.3284 28.6672C19.3284 29.7102 20.2679 30.5558 21.4268 30.5558Z" fill="#F5EFE7"/></svg>
+              </span>
+              <span class="status-label-count">Pending Orders <span class="status-count">2</span></span>
+            </div>
+            <div class="status-row">
+              <span class="status-icon">
+                <svg width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21.5467 0.674072C9.74517 0.674072 0.178711 9.31475 0.178711 19.9742C0.178711 30.6337 9.74517 39.2744 21.5467 39.2744C33.3483 39.2744 42.9148 30.6337 42.9148 19.9742C42.9148 9.31475 33.3483 0.674072 21.5467 0.674072ZM21.5467 35.4143C12.1213 35.4143 4.45232 28.4875 4.45232 19.9742C4.45232 11.4609 12.1213 4.5341 21.5467 4.5341C30.9722 4.5341 38.6412 11.4609 38.6412 19.9742C38.6412 28.4875 30.9722 35.4143 21.5467 35.4143Z" fill="#F5EFE7"/><path d="M23.6835 10.324H19.4099V21.9041H32.2307V18.044H23.6835V10.324Z" fill="#F5EFE7"/></svg>
+              </span>
+              <span class="status-label-count">In Progress Orders <span class="status-count">1</span></span>
+            </div>
+            <div class="status-row">
+              <span class="status-icon">
+                <svg width="43" height="43" viewBox="0 0 43 43" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M27.5194 6.45363V1.58105H0.656738V42.2626H38.0398V17.7654H33.5623V37.39H5.13424V6.45363H27.5194Z" fill="#F5EFE7"/><path d="M39.3263 0.400879L19.3479 22.142L11.1215 13.1898L7.79688 16.8065L16.0244 25.7588H16.0233L19.3479 29.3755L22.6714 25.7588L42.6497 4.01759L39.3263 0.400879Z" fill="#F5EFE7"/></svg>
+              </span>
+              <span class="status-label-count">Completed Orders <span class="status-count">1</span></span>
+            </div>
+          </div>
+          <div class="supply-card">
+            <div class="supply-title">Supply List</div>
+            <div class="supply-row">Detergent <span class="supply-status in-stock">In stock</span></div>
+            <div class="supply-row">Softener <span class="supply-status in-stock">In stock</span></div>
+            <div class="supply-row">Bleach <span class="supply-status low-stock">Low stock</span></div>
+            <div class="supply-row">Fragrance <span class="supply-status no-stock">No stock</span></div>
+            <div class="supply-row">Hanger <span class="supply-status in-stock">In stock</span></div>
+            <div class="supply-row">Gloves <span class="supply-status low-stock">Low stock</span></div>
+            <div class="supply-row">Plastic Wrap <span class="supply-status in-stock">In stock</span></div>
+            <button class="supply-update">Show All</button>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="modalOverlay" class="modal-overlay hidden">
+      <div class="modal">
+        <h2>New Customer</h2>
+        <form class="modal-form">
+          <div class="modal-form-col">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option value="pending">Pending</option>
+              <option value="ongoing">Ongoing</option>
+              <option value="complete">Complete</option>
+            </select>
+            <label for="service">Service Type:</label>
+            <select id="service" name="service">
+              <option>Dry Cleaning</option>
+              <option>Wash and Fold</option>
+              <option>Iron and Press</option>
+            </select>
+            <label for="load">Load Count:</label>
+            <div class="modal-load-row"><input type="number" id="load" name="load" /> <span class="kg-label">KG</span></div>
+          </div>
+          <div class="modal-form-col">
+            <label for="amount">Amount</label>
+            <input type="text" id="amount" name="amount" />
+            <label for="balance">Balance</label>
+            <input type="text" id="balance" name="balance" />
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date" required />
+          </div>
+          <button type="submit" class="modal-add" style="grid-column: 1 / -1; width: 100%; margin-top: 18px;">Add</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="dashboard.js"></script>
+</body>
+</html> 
