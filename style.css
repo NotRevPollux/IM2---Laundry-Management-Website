@@ -155,6 +155,7 @@ body, html, #root, .app-root {
     cursor: pointer;
     transition: background 0.2s;
     position: relative;
+    text-decoration: none !important;
 }
 .sidebar-btn.active, .sidebar-btn:hover {
     background: #233754;
@@ -242,12 +243,6 @@ body, html, #root, .app-root {
     width: 100%;
     margin-left: 24px;
 }
-.dashboard-info-right-group {
-    display: flex;
-    flex-direction: row;
-    gap: 36px;
-    align-items: flex-start;
-}
 .dashboard-info-left-box {
     background: #233754;
     border-radius: 24px;
@@ -259,6 +254,38 @@ body, html, #root, .app-root {
     max-width: 340px;
     width: 100%;
     align-items: flex-start;
+    min-height: 420px;
+    max-height: 420px;
+    justify-content: flex-start;
+}
+.divider {
+    width: 100%;
+    height: 2px;
+    background: #bfc9d9;
+    opacity: 0.3;
+    margin: 8px 0 8px 0;
+    border-radius: 1px;
+}
+.pricelist-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 0;
+}
+.pricelist-title {
+    font-size: 1.1rem;
+    color: #bfc9d9;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+.pricelist-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: #fff;
+    width: 100%;
 }
 .add-order-card {
     background: #2d4663;
@@ -294,13 +321,27 @@ body, html, #root, .app-root {
     background: #233754;
     color: #fff;
     border-radius: 16px;
-    width: 220px;
+    width: 320px;
     min-height: 170px;
     padding: 18px 20px 16px 20px;
     display: flex;
     flex-direction: column;
     gap: 4px;
     position: relative;
+}
+.order-card-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-top: 10px;
+}
+.order-paid, .order-balance {
+    font-size: 0.95rem;
+    color: #bfc9d9;
+    font-weight: 400;
+    text-align: right;
+    width: 100%;
 }
 .order-status {
     position: absolute;
@@ -462,8 +503,13 @@ body, html, #root, .app-root {
     text-align: center;
 }
 .supply-status.in-stock {
-    background: #43ea7f;
+    background: #7be495;
     color: #233754;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 6px 18px;
+    display: inline-block;
+    font-size: 1rem;
 }
 .supply-status.low-stock {
     background: #ffb300;
@@ -511,8 +557,8 @@ body, html, #root, .app-root {
     background: #f7f3ee;
     border-radius: 20px;
     padding: 36px 32px 28px 32px;
-    min-width: 700px;
-    max-width: 900px;
+    min-width: 900px;
+    max-width: 1100px;
     width: 90vw;
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     display: flex;
@@ -530,12 +576,13 @@ body, html, #root, .app-root {
     display: flex;
     flex-direction: row;
     gap: 32px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
 }
 .modal-form-col {
     flex: 1 1 0;
-    min-width: 280px;
+    min-width: 340px;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
     gap: 18px;
@@ -557,9 +604,46 @@ body, html, #root, .app-root {
 .modal-form input:focus, .modal-form select:focus {
     box-shadow: 0 0 0 2px #23375422;
 }
+.modal-form-cols {
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+    width: 100%;
+    justify-content: space-between;
+}
+.modal-form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 48px;
+    width: 100%;
+    margin-bottom: 0;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+.modal-form-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0;
+    min-width: 120px;
+    gap: 4px;
+    justify-content: flex-end;
+}
+.modal-form-group input[type='date'] {
+    min-width: 170px;
+}
+.modal-form-group.add-btn-group {
+    flex: none;
+    min-width: 180px;
+    max-width: 220px;
+    align-items: flex-end;
+    justify-content: flex-end;
+    margin-left: 320px;
+}
 .modal-add {
-    margin-top: 12px;
-    padding: 10px 0;
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+    padding: 12px 0;
     border-radius: 8px;
     border: 2px solid #233754;
     background: #233754;
@@ -568,6 +652,10 @@ body, html, #root, .app-root {
     font-weight: 500;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+    box-shadow: none;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
 }
 .modal-add:hover {
     background: #fff;
@@ -597,6 +685,7 @@ body, html, #root, .app-root {
     }
     .modal-form-col {
         min-width: unset;
+        max-width: unset;
     }
 }
 
@@ -649,4 +738,385 @@ body, html, #root, .app-root {
 .order-update {
     font-family: 'Lexend Deca', Arial, sans-serif;
     font-weight: 600;
-} 
+}
+
+.order-main-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+}
+.order-main-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.order-main-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    min-width: 120px;
+}
+
+.dashboard-info-right-group {
+    display: flex;
+    flex-direction: row;
+    gap: 36px;
+    align-items: flex-start;
+}
+
+.new-add-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+}
+.new-modal-add {
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    border: 2px solid #233754;
+    background: #233754;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: none;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+}
+.new-modal-add:hover {
+    background: #fff;
+    color: #233754;
+}
+
+.center-modal-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 32px;
+    min-width: 180px;
+    max-width: 220px;
+    width: 100%;
+    padding: 12px 0;
+    border-radius: 8px;
+    border: 2px solid #233754;
+    background: #233754;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: none;
+}
+.center-modal-btn:hover {
+    background: #fff;
+    color: #233754;
+}
+
+#orders-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    width: 100%;
+    margin-bottom: 48px;
+    margin-left: 24px;
+}
+
+#orders-list .order-main-right {
+    text-align: left;
+}
+
+/* --- LOGIN.HTML STYLES (from login.css) --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    background: #222;
+    min-height: 100vh;
+    position: relative;
+}
+
+.login-header {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    color: #bdbdbd;
+    font-size: 16px;
+    z-index: 2;
+}
+
+.login-bg {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/background.jpg') center center/cover no-repeat;
+    filter: grayscale(70%) brightness(0.6);
+    z-index: 0;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #22375a;
+    border-radius: 18px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+    padding: 48px 48px 36px 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 400px;
+    z-index: 1;
+}
+
+.login-logo {
+    width: 120px;
+    margin-bottom: 32px;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.login-form label {
+    color: #fff;
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+.login-form input {
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: 1.5px solid #bdbdbd;
+    background: transparent;
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    margin-bottom: 8px;
+    transition: border 0.2s;
+}
+
+.login-form input:focus {
+    border: 1.5px solid #fff;
+}
+
+.login-form button {
+    margin-top: 10px;
+    padding: 10px 0;
+    border-radius: 10px;
+    border: 1.5px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-size: 17px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.login-form button:hover {
+    background: #fff;
+    color: #22375a;
+}
+
+@media (max-width: 600px) {
+    .login-container {
+        min-width: 90vw;
+        padding: 32px 8vw 24px 8vw;
+    }
+    .login-logo {
+        width: 90px;
+    }
+}
+
+.orders-empty-center {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: #233754;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.order-main-right.order-card-bottom {
+    margin-top: 18px !important;
+}
+
+.customer-card {
+    background: #233754;
+    border-radius: 24px;
+    color: #fff;
+    padding: 28px 32px 24px 32px;
+    min-width: 340px;
+    max-width: 340px;
+    min-height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    font-size: 1.15rem;
+    box-sizing: border-box;
+    margin: 0 0 32px 0;
+    box-shadow: 0 2px 12px 0 rgba(31,38,135,0.07);
+    position: relative;
+}
+.customer-card .customer-label {
+    color: #bfc9d9;
+    font-size: 1.05rem;
+    font-weight: 400;
+    margin-bottom: 2px;
+    letter-spacing: 0.2px;
+}
+.customer-card .customer-value {
+    color: #fff;
+    font-size: 1.18rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    letter-spacing: 0.1px;
+}
+.customer-card .customer-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+}
+.customer-card .customer-type {
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 500;
+    background: #233754;
+    border-radius: 8px;
+    padding: 2px 12px;
+    display: inline-block;
+    margin-top: 6px;
+    margin-bottom: 0;
+    letter-spacing: 0.2px;
+}
+
+.customers-table {
+    width: 90%;
+    margin: 32px auto 48px auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #233754;
+    border-radius: 18px;
+    overflow: hidden;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    box-shadow: 0 2px 12px 0 rgba(31,38,135,0.07);
+}
+.customers-table th, .customers-table td {
+    padding: 18px 28px;
+    text-align: left;
+}
+.customers-table th {
+    background: #1a2a3a;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-bottom: 2px solid #bfc9d9;
+}
+.customers-table td {
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 500;
+    border-bottom: 1px solid #2d4663;
+}
+.customers-table tr:last-child td {
+    border-bottom: none;
+}
+
+#supplies-list {
+    /* No special styles */
+}
+/* --- Redesigned Supplies Table --- */
+.supplies-table {
+  width: 100%;
+  max-width: 700px;
+  margin: 48px auto 0 auto;
+  background: #2d4663;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(44, 62, 80, 0.10);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  font-size: 1.08rem;
+}
+.supplies-table th, .supplies-table td {
+  padding: 18px 22px;
+  text-align: center;
+}
+.supplies-table th {
+  background: #233754;
+  color: #F5EFE7;
+  font-weight: 700;
+  font-size: 1.1rem;
+  border-bottom: 2px solid #233754;
+}
+.supplies-table tr:not(:last-child) td {
+  border-bottom: 1px solid #233754;
+}
+.supplies-table td {
+  color: #F5EFE7;
+  background: #2d4663;
+}
+.supply-status.in-stock {
+  background: #7be495;
+  color: #233754;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 18px;
+  display: inline-block;
+  font-size: 1rem;
+}
+.supply-status.low-stock {
+  background: #f1c40f;
+  color: #233754;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 18px;
+  display: inline-block;
+  font-size: 1rem;
+}
+.supply-status.no-stock {
+  background: #e74c3c;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 8px;
+  padding: 6px 18px;
+  display: inline-block;
+  font-size: 1rem;
+}
+.supply-plus, .supply-minus {
+  background: #233754;
+  color: #F5EFE7;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.25rem;
+  width: 36px;
+  height: 36px;
+  margin: 0 4px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 1px 2px rgba(44,62,80,0.04);
+}
+.supply-plus:hover, .supply-minus:hover {
+  background: #1abc9c;
+  color: #fff;
+}
+/* --- End Supplies Table Redesign --- */ 
