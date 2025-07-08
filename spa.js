@@ -1,29 +1,31 @@
-// SPA Navigation and Logic
-
 document.addEventListener('DOMContentLoaded', function() {
-  // Section references
+
   const dashboardSection = document.getElementById('dashboard-section');
   const ordersSection = document.getElementById('orders-section');
   const customersSection = document.getElementById('customers-section');
   const suppliesSection = document.getElementById('supplies-section');
+  const staffSection = document.getElementById('staff-section');
   const navDashboard = document.getElementById('nav-dashboard');
   const navOrders = document.getElementById('nav-orders');
   const navCustomers = document.getElementById('nav-customers');
   const navSupplies = document.getElementById('nav-supplies');
+  const navStaff = document.getElementById('nav-staff');
   const sidebarBtns = document.querySelectorAll('.sidebar-btn');
 
-  /
+  
   function showSection(section) {
     dashboardSection.style.display = section === 'dashboard' ? '' : 'none';
     ordersSection.style.display = section === 'orders' ? '' : 'none';
     customersSection.style.display = section === 'customers' ? '' : 'none';
     suppliesSection.style.display = section === 'supplies' ? '' : 'none';
-    // Active button highlight
+    staffSection.style.display = section === 'staff' ? '' : 'none';
+  
     sidebarBtns.forEach(btn => btn.classList.remove('active'));
     if (section === 'dashboard') navDashboard.classList.add('active');
     if (section === 'orders') navOrders.classList.add('active');
     if (section === 'customers') navCustomers.classList.add('active');
     if (section === 'supplies') navSupplies.classList.add('active');
+    if (section === 'staff') navStaff.classList.add('active');
   }
   navDashboard.addEventListener('click', function(e) {
     e.preventDefault();
@@ -45,10 +47,14 @@ document.addEventListener('DOMContentLoaded', function() {
     showSection('supplies');
     renderSuppliesSection();
   });
-  // Start on dashboard
+  navStaff.addEventListener('click', function(e) {
+    e.preventDefault();
+    showSection('staff');
+    renderStaffSection();
+  });
+  
   showSection('dashboard');
 
-  // --- Dashboard Logic (in-memory state) ---
   let dashboardOrders = [];
   let orderIdCounter = 1;
   let editingOrderIndex = null;
@@ -211,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function() {
     updateStatusCounters();
   }
 
-  // Modal logic
+
   addOrderBtn.addEventListener('click', function() {
     editingOrderIndex = null;
     modalOverlay.classList.remove('hidden');
@@ -256,10 +262,10 @@ document.addEventListener('DOMContentLoaded', function() {
         modalOverlay.classList.add('hidden');
         return;
       }
-      // --- SUPPLY DEDUCTION LOGIC ---
+      
       const consumption = supplyConsumption[service];
       let canDeduct = true;
-      // For each supply, multiply by load (if per kilo)
+     
       for (const key in consumption) {
         const required = consumption[key] * load;
         if (supplies[key] < required) {
@@ -271,16 +277,17 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Not enough supplies in stock for this order. Please check supply levels.');
         return;
       }
-      // Deduct supplies
+    
       for (const key in consumption) {
         supplies[key] -= consumption[key] * load;
       }
       renderSuppliesSection();
-      // --- END SUPPLY DEDUCTION ---
+      renderDashboardSupplyList();
+      
       const orderId = String(orderIdCounter).padStart(5, '0');
       dashboardOrders.push({ name, number, statusValue, service, load, amount, paid, balance, dateValue, orderId });
       orderIdCounter++;
-      // Add or update customer in customers array
+      
       let customer = customers.find(c => c.name === name && c.number === number);
       if (customer) {
         customer.type = 'Returning';
@@ -306,7 +313,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Orders Section Logic (read-only, from dashboardOrders) ---
+  
   function getStatusClass(status) {
     if (status === 'pending') return 'order-status pending';
     if (status === 'ongoing') return 'order-status ongoing';
@@ -364,7 +371,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // --- Customers Logic ---
+  
   let customers = [];
   function renderCustomersSection() {
     const customersList = document.getElementById('customers-list');
@@ -373,7 +380,7 @@ document.addEventListener('DOMContentLoaded', function() {
       customersList.innerHTML = '<div class="orders-empty-center">No customers found.</div>';
       return;
     }
-    // Create table
+    
     const table = document.createElement('table');
     table.className = 'customers-table';
     const thead = document.createElement('thead');
@@ -399,7 +406,6 @@ document.addEventListener('DOMContentLoaded', function() {
     customersList.appendChild(table);
   }
 
-  // --- Supplies Logic ---
   const initialSupplies = {
     detergent: 15,
     softener: 15,
@@ -425,6 +431,29 @@ document.addEventListener('DOMContentLoaded', function() {
     if (qty >= 6) return { text: 'In Stock', class: 'in-stock' };
     if (qty >= 1) return { text: 'Low Stock', class: 'low-stock' };
     return { text: 'No Stock', class: 'no-stock' };
+  }
+
+  function renderDashboardSupplyList() {
+    const dashboardSupplyList = document.getElementById('dashboard-supply-list');
+    if (!dashboardSupplyList) return;
+    dashboardSupplyList.innerHTML = '';
+    Object.keys(supplies).forEach(key => {
+      const status = getStockStatus(supplies[key]);
+      const row = document.createElement('div');
+      row.className = 'supply-row';
+      row.innerHTML = `
+        ${supplyLabels[key]} <span class="supply-status ${status.class}">${status.text}</span>
+      `;
+      dashboardSupplyList.appendChild(row);
+    });
+    // Add event listener for Show All button to redirect to Supplies tab
+    const showAllBtn = document.querySelector('.supply-card .supply-update');
+    if (showAllBtn) {
+      showAllBtn.onclick = function() {
+        showSection('supplies');
+        renderSuppliesSection();
+      };
+    }
   }
 
   function renderSuppliesSection() {
@@ -459,12 +488,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     table.appendChild(tbody);
     suppliesList.appendChild(table);
-    // Add event listeners for plus/minus
+  
     suppliesList.querySelectorAll('.supply-plus').forEach(btn => {
       btn.addEventListener('click', function() {
         const key = btn.getAttribute('data-supply');
         supplies[key]++;
         renderSuppliesSection();
+        renderDashboardSupplyList();
       });
     });
     suppliesList.querySelectorAll('.supply-minus').forEach(btn => {
@@ -472,10 +502,50 @@ document.addEventListener('DOMContentLoaded', function() {
         const key = btn.getAttribute('data-supply');
         if (supplies[key] > 0) supplies[key]--;
         renderSuppliesSection();
+        renderDashboardSupplyList();
       });
     });
+    renderDashboardSupplyList();
   }
 
-  // Initial render
+  renderDashboardSupplyList();
   renderDashboardOrders();
+
+  const staffList = document.getElementById('staff-list');
+  const logoutBtn = document.getElementById('logoutBtn');
+  let staffData = [''];
+
+  function renderStaffSection() {
+    staffList.innerHTML = '';
+    const table = document.createElement('table');
+    table.className = 'supplies-table';
+    const thead = document.createElement('thead');
+    thead.innerHTML = `
+      <tr>
+        <th>Staff Name</th>
+      </tr>
+    `;
+    table.appendChild(thead);
+    const tbody = document.createElement('tbody');
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td><input type="text" id="staffNameInput" value="${staffData[0] || ''}" placeholder="Enter staff name" style="width: 100%; box-sizing: border-box; background: #2d4663; color: #F5EFE7; border: none; border-radius: 8px; padding: 12px 18px; font-size: 1.08rem; font-family: 'Lexend Deca', Arial, sans-serif;" /></td>
+    `;
+    tbody.appendChild(row);
+    table.appendChild(tbody);
+    staffList.appendChild(table);
+    // Update staffData[0] on input
+    const staffNameInput = document.getElementById('staffNameInput');
+    if (staffNameInput) {
+      staffNameInput.oninput = function() {
+        staffData[0] = staffNameInput.value;
+      };
+    }
+  }
+
+  if (logoutBtn) {
+    logoutBtn.onclick = function() {
+      window.location.href = 'login.html';
+    };
+  }
 }); 

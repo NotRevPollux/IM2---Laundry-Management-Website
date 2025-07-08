@@ -1041,10 +1041,7 @@ body {
     border-bottom: none;
 }
 
-#supplies-list {
-    /* No special styles */
-}
-/* --- Redesigned Supplies Table --- */
+
 .supplies-table {
   width: 100%;
   max-width: 700px;
@@ -1119,4 +1116,30 @@ body {
   background: #1abc9c;
   color: #fff;
 }
-/* --- End Supplies Table Redesign --- */ 
+
+.staff-center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    width: 100%;
+}
+.logout-btn-themed {
+    background: #233754;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 14px 48px;
+    font-size: 1.1rem;
+    font-family: 'Lexend Deca', Arial, sans-serif;
+    font-weight: 600;
+    margin-top: 32px;
+    box-shadow: 0 2px 12px 0 rgba(31,38,135,0.07);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.logout-btn-themed:hover {
+    background: #e53935;
+    color: #fff;
+}
