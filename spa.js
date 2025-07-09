@@ -12,20 +12,45 @@ document.addEventListener('DOMContentLoaded', function() {
   const navStaff = document.getElementById('nav-staff');
   const sidebarBtns = document.querySelectorAll('.sidebar-btn');
 
-  
+  // Determine if user is admin
+  let userEmail = localStorage.getItem('userEmail');
+  const navAccounts = document.getElementById('nav-accounts');
+  const navSales = document.getElementById('nav-sales');
+  const accountsSection = document.getElementById('accounts-section');
+  const salesSection = document.getElementById('sales-section');
+
+  if (userEmail === 'admin@albaani') {
+    if (navAccounts) navAccounts.style.display = '';
+    if (navSales) navSales.style.display = '';
+    // Change 'Staff' label to 'Admin' (text node only)
+    if (navStaff) {
+      // Find the text node after the sidebar-icon span
+      const children = Array.from(navStaff.childNodes);
+      for (let i = 0; i < children.length; i++) {
+        if (children[i].nodeType === Node.TEXT_NODE && children[i].textContent.includes('Staff')) {
+          children[i].textContent = children[i].textContent.replace('Staff', 'Admin');
+        }
+      }
+    }
+  }
+
   function showSection(section) {
     dashboardSection.style.display = section === 'dashboard' ? '' : 'none';
     ordersSection.style.display = section === 'orders' ? '' : 'none';
     customersSection.style.display = section === 'customers' ? '' : 'none';
     suppliesSection.style.display = section === 'supplies' ? '' : 'none';
     staffSection.style.display = section === 'staff' ? '' : 'none';
-  
+    if (accountsSection) accountsSection.style.display = section === 'accounts' ? '' : 'none';
+    if (salesSection) salesSection.style.display = section === 'sales' ? '' : 'none';
+
     sidebarBtns.forEach(btn => btn.classList.remove('active'));
     if (section === 'dashboard') navDashboard.classList.add('active');
     if (section === 'orders') navOrders.classList.add('active');
     if (section === 'customers') navCustomers.classList.add('active');
     if (section === 'supplies') navSupplies.classList.add('active');
     if (section === 'staff') navStaff.classList.add('active');
+    if (section === 'accounts' && navAccounts) navAccounts.classList.add('active');
+    if (section === 'sales' && navSales) navSales.classList.add('active');
   }
   navDashboard.addEventListener('click', function(e) {
     e.preventDefault();
@@ -52,6 +77,18 @@ document.addEventListener('DOMContentLoaded', function() {
     showSection('staff');
     renderStaffSection();
   });
+  if (navAccounts) {
+    navAccounts.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection('accounts');
+    });
+  }
+  if (navSales) {
+    navSales.addEventListener('click', function(e) {
+      e.preventDefault();
+      showSection('sales');
+    });
+  }
   
   showSection('dashboard');
 

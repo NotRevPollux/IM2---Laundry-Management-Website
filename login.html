@@ -27,6 +27,7 @@
         const email = document.getElementById('email').value.trim().toLowerCase();
         const errorDiv = document.getElementById('login-error');
         if (email === 'staff@albaani' || email === 'admin@albaani') {
+          localStorage.setItem('userEmail', email);
           window.location.href = 'spa.html';
         } else {
           errorDiv.textContent = 'Invalid email. Please try again.';
